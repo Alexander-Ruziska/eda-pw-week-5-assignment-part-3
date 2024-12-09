@@ -13,7 +13,7 @@ const myCollection = [];
     [x] `return` the newly created object.
 */
 function addToCollection(collection, title, artist, yearPublished) {  
-  if (title && artist && yearPublished) {
+  //if (title && artist && yearPublished) {
       //make newAlblum object with provided keys from parameters
   let newAlbum = {  //js shorthand for parameters that are used as the same object key, ie, {title: title} can be shortened to {title} 
     title: title,  
@@ -23,9 +23,9 @@ function addToCollection(collection, title, artist, yearPublished) {
    collection.push(newAlbum);  
    return newAlbum;    
   }
-  return;
+  //return;
 
-} 
+//} 
 // let albums = [  
 //   { title: "The Big One", artist: "Geazy", yearPublished: 1943 },  
 //   { title: "The Medium One", artist: "Geazy", yearPublished: 1944 },  
@@ -77,18 +77,26 @@ function showCollection(collection) {
     let matchingAlbums = [];  
     
     // Loop through the collection and add any album objects with a matching artist to the array  
-    collection.forEach(album => { 
+    //collection.forEach(album => { 
       //what is album? it is an object that looks like this: {title: '', artist: 'John Cena', yearPublished: ''} 
       //john cena (after the .toLowerCase())
-     if (album.artist.toLowerCase() === artist.toLowerCase()) {  
+     /*if (album.artist.toLowerCase() === artist.toLowerCase()) {  
       matchingAlbums.push(album);  
      }  
     });  
    
     return matchingAlbums;  
   }  
+*/
+for (let album of collection) {  
+   if (album.artist === artist) {  
+    matchingAlbums.push(album);  
+   }  
+  }  
 
-
+  // Return the array with the matching results  
+  return matchingAlbums;  
+  }
 
 
 
@@ -123,14 +131,11 @@ showCollection(myCollection);
 //showCollection(myFavAlbums);
 
 
+console.log(findByArtist(myCollection, "Michael Jackson")); //False, will be empty
+console.log(findByArtist(myCollection, "Geazy")); //True, should show 3 results
 
 
-
-
-
-
-
-
+//Stretch Goal
 
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
@@ -147,3 +152,4 @@ try {
 } catch (e) {
   // Do nothing
 }
+  
